@@ -1,0 +1,101 @@
+<html>
+<head>
+</head>
+
+<body>
+
+<style>
+	#button {
+	  display: inline-block;
+	  padding: 15px 25px;
+	  font-size: 24px;
+	  cursor: pointer;
+	  text-align: center;
+	  text-decoration: none;
+	  outline: none;
+	  color: #fff;
+	  background-color: #4CAF50;
+	  border: none;
+	  border-radius: 15px;
+	  box-shadow: 0 9px #999;
+	  margin-left: 50;
+	}
+
+	#button:hover {background-color: #3e8e41}
+
+	#button:active {
+	  background-color: #3e8e41;
+	  box-shadow: 0 5px #666;
+	  transform: translateY(4px);
+	}
+</style>
+
+<p id="text" style="width:321; height:151;"></p>
+<button id="button" onclick="nextElement();" >Next</button><br>
+
+<script type="text/javascript">
+	var arrSize = 64;
+	var deck = shuffle(arrSize);
+	var index = 0;
+	
+	function nextElement()
+	{
+		if (index >= deck.length)
+		{
+			deck = shuffle(arrSize);
+			index = 0;
+		}
+		var cardName = getCardValue(deck[index++ % deck.length]);
+		document.getElementById("text").innerHTML = cardName;
+	}
+	
+	function getCardValue(num)
+	{
+		var value = "";
+		if (num == 0) {value = '<img src="IceCream.png">'}
+		else if (num == 1) {value = '<img src="GummyStar.png">'}
+		else if (num == 2) {value = '<img src="GingerBread.png">'}
+		else if (num == 3) {value = '<img src="LolliPop.png">'}
+		else if (num == 4) {value = '<img src="Popsicle.png">'}
+		else if (num == 5) {value = '<img src="Cupcake.png">'}
+		else if (num == 6) {value = '<img src="Truffle.png">'}
+		else if (num < 13) {value = '<img src="1Blue.png">'}
+		else if (num < 17) {value = '<img src="2Blue.png">'}
+		else if (num < 23) {value = '<img src="1Green.png">'}
+		else if (num < 26) {value = '<img src="2Green.png">'}
+		else if (num < 31) {value = '<img src="1Purple.png">'}
+		else if (num < 35) {value = '<img src="2Purple.png">'}
+		else if (num < 41) {value = '<img src="1Yellow.png">'}
+		else if (num < 45) {value = '<img src="2Yellow.png">'}
+		else if (num < 51) {value = '<img src="1Red.png">'}
+		else if (num < 55) {value = '<img src="2Red.png">'}
+		else if (num < 61) {value = '<img src="1Orange.png">'}
+		else if (num <= 63) {value = '<img src="2Orange.png">'}
+		
+		return value;
+	}
+	
+	function shuffle(size)
+	{
+		var arr = new Array(size);
+		for (i = 0; i < arr.length; i++)
+		{
+			arr[i] = i;
+		}
+		
+		for (i = 0; i < arr.length; i++)
+		{
+			var r1 = Math.floor(Math.random() * arrSize);
+			var r2 = Math.floor(Math.random() * arrSize);
+			var temp = arr[r1]
+			arr[r1] = arr[r2]
+			arr[r2] = temp
+		}
+		
+		return arr;
+	}
+	
+</script>
+
+</body>
+</html>
